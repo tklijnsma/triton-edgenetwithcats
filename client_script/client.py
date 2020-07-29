@@ -46,6 +46,7 @@ fixed_init_file = init_file.replace(
     'self._channel = grpc.insecure_channel(url, options=[(\'grpc.max_send_message_length\', 512 * 1024 * 1024), (\'grpc.max_receive_message_length\', 512 * 1024 * 1024)])'
     )
 if fixed_init_file != init_file:
+    print('WARNING: Hacking tritongrpcclient to allow larger requests to be sent')
     with open('/usr/local/lib/python3.6/dist-packages/tritongrpcclient/__init__.py', 'w') as f:
         f.write(fixed_init_file)
 # ############# HACK #############

@@ -20,7 +20,7 @@ docker run -dt --name triton-edgenetwithcats-server \
 # Start the triton server in it
 docker exec -dti triton-edgenetwithcats-server tritonserver --model-repository=/models
 
-# Spin up the client container; mount the directory with the data
+# Spin up the client container; mount the directory with the data and the directory with client.py in it
 docker run -dt --name triton-edgenetwithcats-client \
     --network $NETWORKNAME \
     -v`pwd`/hgcal_testdata:/hgcal_testdata \
