@@ -113,7 +113,8 @@ if __name__ == '__main__':
     print('config:\n', mconf)
     
     # Loop over testdata and send inferences
-    for npzfile in glob.glob('/hgcal_testdata/*.npz'):
+    for npzfile in sorted(glob.glob('/hgcal_testdata/*.npz')):
+        print(npzfile)
         inputs = []
         outputs = []
 
@@ -143,6 +144,7 @@ if __name__ == '__main__':
             )
         output0_data = results.as_numpy('output__0')
         print(output0_data)
+        del output0_data
 
     statistics = triton_client.get_inference_statistics(model_name=model_name)
     print(statistics)
