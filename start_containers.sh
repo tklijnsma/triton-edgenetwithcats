@@ -27,6 +27,9 @@ docker run -dt --name triton-edgenetwithcats-client \
     -v`pwd`/client_script:/run_inference \
     nvcr.io/nvidia/tritonserver:20.06-py3-clientsdk
 
+# May take some time for the server to spin up
+sleep 15
+
 # Start sending the inference requests from the client to the server
 docker exec -ti triton-edgenetwithcats-client \
     python /run_inference/client.py -m edgenetwithcats -u triton-edgenetwithcats-server:8001
